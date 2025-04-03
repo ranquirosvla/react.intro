@@ -1,6 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 
+function HelloWorld() {
+
+  const nombre = "John Connor";
+  return (
+    <div className="Hola">
+      <h1>Hello World</h1>
+      <p>Ni nombre es: {nombre}</p>
+    </div>
+  );
+}
+
 function App() {
   return (
     <div className="App">
@@ -18,6 +29,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <HelloWorld />
     </div>
   );
 }
