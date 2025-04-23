@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import useState from 'react';  
+
 
 function HelloWorld() {
 
@@ -23,19 +25,33 @@ function App() {
   // const mostrarNumber = number > 5 ? true : false; //mayor de 5 es true
 
   const menuGithub = [ 
-    { id: 1, nombre: 'Code', url: 'https://github.com/code' },
-    { id: 2, nombre: 'Issues', url: 'https://github.com/issues' },
-    { id: 3, nombre: 'Pull-request', url: 'https://github.com/pull-request' },
+    { id: 1, nombre: 'Code', url: 'https://github.com/code', isSelected: false },
+    { id: 2, nombre: 'Issues', url: 'https://github.com/issues',isSelected: true },
+    { id: 3, nombre: 'Pull-request', url: 'https://github.com/pull-request', isSelected: false },
   ] ;
 
   const menu = menuGithub.map(item => {
     return (
-      <div>
-      {item.nombre}
-      </div>
+      <p>
+        {item.nombre}
+    
+        {item.isSelected? '*' : ' '}
+        
+      </p>
     )
   }
   );
+  
+  const [contador, setcontador] = useState(0);
+  function incrementaContador () {
+    setcontador(contador + 1);
+  }
+
+
+  function decrementaContador () {
+    setcontador(contador - 1);  
+  }
+  
 
   return (
     <div className="App">
@@ -85,12 +101,18 @@ function App() {
       {mostrarNumber && 'El numero es mayor a 5' }
       </div>
 
-    </div>
+      </div>
 
       <div>
         {menu}
       </div>
     
+      <div>
+        <h1>El Contador es: {contador} </h1>
+        <button onClick={incrementaContador}>Incrementar</button>
+        <button onClick={decrementaContador}>Decrementar</button>
+      </div>
+
     </div>
   );
 }
